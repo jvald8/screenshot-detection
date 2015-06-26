@@ -7,11 +7,8 @@ function checkArray(checkIfCombo) {
     controlKey   = _.contains(checkIfCombo, 17),
     threeKey     = _.contains(checkIfCombo, 51),
     fourKey      = _.contains(checkIfCombo, 52);
-    if(navigator.userAgent.match(/Firefox/i)) {
-      commandKey = _.contains(checkIfCombo, 224);
-    } else {
-      commandKey = _.contains(checkIfCombo, 91);
-    }
+
+    var commandKey   = navigator.userAgent.match(/Firefox/i) ? _.contains(checkIfCombo, 224) : _.contains(checkIfCombo, 91);
 
     var screenshotCombo = ((shiftKey && commandKey) && (fourKey || threeKey)) ||
     ((shiftKey && commandKey && controlKey) && (fourKey || threeKey));
@@ -40,6 +37,7 @@ function checkArray(checkIfCombo) {
 var checkIfCombo = [];
 
 $(window).keydown(function(e) {
+  e.preventDefault();
   checkIfCombo.push(e.which)
   console.log(checkIfCombo);
   if(checkArray(checkIfCombo)) {
@@ -51,3 +49,4 @@ $(window).keydown(function(e) {
   })
   console.log(checkIfCombo)
 })
+
