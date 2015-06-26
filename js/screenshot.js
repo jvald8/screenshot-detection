@@ -5,9 +5,13 @@ function checkArray(checkIfCombo) {
   if(macCheck) {
     var shiftKey = _.contains(checkIfCombo, 16),
     controlKey   = _.contains(checkIfCombo, 17),
-    commandKey   = _.contains(checkIfCombo, 91),
     threeKey     = _.contains(checkIfCombo, 51),
     fourKey      = _.contains(checkIfCombo, 52);
+    if(navigator.userAgent.match(/Firefox/i)) {
+      commandKey = _.contains(checkIfCombo, 224);
+    } else {
+      commandKey = _.contains(checkIfCombo, 91);
+    }
 
     var screenshotCombo = ((shiftKey && commandKey) && (fourKey || threeKey)) ||
     ((shiftKey && commandKey && controlKey) && (fourKey || threeKey));
