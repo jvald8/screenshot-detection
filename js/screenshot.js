@@ -37,7 +37,7 @@ function checkArray(checkIfCombo) {
 var checkIfCombo = [];
 
 $(window).keydown(function(e) {
-  e.preventDefault();
+  console.log('event stuff: ' + e.location)
   checkIfCombo.push(e.which)
   console.log(checkIfCombo);
   if(checkArray(checkIfCombo)) {
